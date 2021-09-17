@@ -12,10 +12,10 @@ export default function ReviewDetails({ navigation, route }) {
       <Card>
         <Text style={globalStyles.title}>{route.params.title}</Text>
         <Text style={globalStyles.paragraph}>{route.params.body}</Text>
-        <View style={styles.rating}>
+        <View>
           <Text style={globalStyles.paragraph}>Rating: </Text>
           <View style={styles.icon}>
-            {Array(item.rating)
+            {Array(parseInt(item.rating))
               .fill()
               .map((_, idx) => (
                 <AntDesign key={idx} name="heart" color="red" size={30} />
