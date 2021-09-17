@@ -3,13 +3,16 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
   FlatList,
   TouchableOpacity,
+  Modal,
 } from "react-native";
+import Card from "../components/Card";
 import { globalStyles } from "../styles/global";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function Home({ navigation }) {
+  const [modalOpen, setModalOpen] = useState(false);
   const [reviews, setReviews] = useState([
     {
       title: "Zelda, Breath of Fresh Air",
@@ -31,19 +34,34 @@ export default function Home({ navigation }) {
     },
   ]);
 
-  const pressHandler = () => {
-    navigation.navigate("ReviewDetails");
-  };
-
   return (
     <View style={globalStyles.container}>
+      <Modal visible={modalOpen} animationType="slide">
+        <View style={styles.modalContent}>
+          <MaterialIcons
+            style={{ ...styles.modalToggle, ...styles.modalClose }}
+            name="close"
+            size={24}
+            onPress={() => setModalOpen(false)}
+          />
+          <Text>Hello</Text>
+        </View>
+      </Modal>
+      <MaterialIcons
+        name="add"
+        size={24}
+        style={styles.modalToggle}
+        onPress={() => setModalOpen(true)}
+      />
       <FlatList
         data={reviews}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => navigation.navigate("ReviewDetails", item)}
           >
-            <Text style={globalStyles.title}>{item.title}</Text>
+            <Card>
+              <Text style={globalStyles.title}>{item.title}</Text>
+            </Card>
           </TouchableOpacity>
         )}
       />
@@ -51,4 +69,20 @@ export default function Home({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  modalToggle: {
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#eee",
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: "center",
+  },
+  modalClose: {
+    marginTop: 20,
+    marginBottom: 0,
+  },
+  modalContent: {
+    flex: 1,
+  },
+});

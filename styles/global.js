@@ -7,8 +7,8 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   title: {
-    fontFamily: "spartan-bold",
-    fontSize: 20,
+    fontFamily: "spartan-regular",
+    fontSize: 18,
     color: "#333",
     textAlign: "center",
   },

@@ -14,9 +14,9 @@ export default function MyApp() {
         screenOptions={{
           header: ({ navigation }) => <Header navigation={navigation} />,
         }}
-        initialRouteName="Home"
+        initialRouteName="HomeStack"
       >
-        <Drawer.Screen name="Home" component={HomeStack} />
+        <Drawer.Screen name="HomeStack" component={HomeStack} />
         <Drawer.Screen name="About" component={About} />
       </Drawer.Navigator>
     </NavigationContainer>
